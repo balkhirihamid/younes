@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style> @layer theme, base, components, utilities; @layer theme { :root, :host { --font-sans: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'; --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; --color-red-200: oklch(0.885 0.062 18.334); --color-red-500: oklch(0.637 0.237 25.331); --color-red-700: oklch(0.505 0.213 27.518); --color-green-600: oklch(0.627 0.194 149.214); --color-sky-600: oklch(0.588 0.158 241.966); --color-indigo-300: oklch(0.785 0.115 274.713); --color-indigo-500: oklch(0.585 0.233 277.117); --color-indigo-600: oklch(0.511 0.262 276.966); --color-violet-500: oklch(0.606 0.25 292.717); --color-purple-500: oklch(0.627 0.265 303.9); --color-purple-700: oklch(0.496 0.265 301.924); --color-fuchsia-500: oklch(0.667 0.295 322.15); --color-pink-500: oklch(0.656 0.241 354.308); --color-rose-500: oklch(0.645 0.246 16.439); --color-gray-100: oklch(0.967 0.003 264.542); --color-gray-200: oklch(0.928 0.006 264.531); --color-gray-300: oklch(0.872 0.01 258.338); --color-gray-400: oklch(0.707 0.022 261.325); --color-gray-500: oklch(0.551 0.027 264.364); --color-gray-600: oklch(0.446 0.03 256.802); --color-gray-700: oklch(0.373 0.034 259.733); --color-gray-800: oklch(0.278 0.033 256.848); --color-gray-900: oklch(0.21 0.034 264.665); --color-black: #000; --color-white: #fff; --spacing: 0.25rem; --breakpoint-sm: 40rem; --container-2xl: 42rem; --container-6xl: 72rem; --container-7xl: 80rem; --text-xs: 0.75rem; --text-xs--line-height: calc(1 / 0.75); --text-sm: 0.875rem; --text-sm--line-height: calc(1.25 / 0.875); --text-base: 1rem; --text-base--line-height: calc(1.5 / 1); --text-lg: 1.125rem; --text-lg--line-height: calc(1.75 / 1.125); --text-xl: 1.25rem; --text-xl--line-height: calc(1.75 / 1.25); --text-2xl: 1.5rem; --text-2xl--line-height: calc(2 / 1.5); --text-3xl: 1.875rem; --text-3xl--line-height: calc(2.25 / 1.875); --text-5xl: 3rem; --text-5xl--line-height: 1; --text-7xl: 4.5rem; --text-7xl--line-height: 1; --font-weight-medium: 500; --font-weight-semibold: 600; --font-weight-bold: 700; --tracking-tight: -0.025em; --radius-md: 0.375rem; --radius-lg: 0.5rem; --radius-xl: 0.75rem; --radius-2xl: 1rem; --blur-3xl: 64px; --aspect-video: 16 / 9; --default-transition-duration: 150ms; --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); --default-font-family: var(--font-sans); --default-font-feature-settings: var(--font-sans--font-feature-settings); --default-font-variation-settings: var(--font-sans--font-variation-settings); --default-mono-font-family: var(--font-mono); --default-mono-font-feature-settings: var(--font-mono--font-feature-settings); --default-mono-font-variation-settings: var(--font-mono--font-variation-settings); } } @layer base { *, ::after, ::before, ::backdrop, ::file-selector-button { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; } html, :host { line-height: 1.5; -webkit-text-size-adjust: 100%; tab-size: 4; font-family: var( --default-font-family, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji' ); font-feature-settings: var(--default-font-feature-settings, normal); font-variation-settings: var(--default-font-variation-settings, normal); -webkit-tap-highlight-color: transparent; } body { line-height: inherit; } hr { height: 0; color: inherit; border-top-width: 1px; } abbr:where([title]) { -webkit-text-decoration: underline dotted; text-decoration: underline dotted; } h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; } a { color: inherit; -webkit-text-decoration: inherit; text-decoration: inherit; } b, strong { font-weight: bolder; } code, kbd, samp, pre { font-family: var( --default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace ); font-feature-settings: var(--default-mono-font-feature-settings, normal); font-variation-settings: var(--default-mono-font-variation-settings, normal); font-size: 1em; } small { font-size: 80%; } sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; } sub { bottom: -0.25em; } sup { top: -0.5em; } table { text-indent: 0; border-color: inherit; border-collapse: collapse; } :-moz-focusring { outline: auto; } progress { vertical-align: baseline; } summary { display: list-item; } ol, ul, menu { list-style: none; } img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; } img, video { max-width: 100%; height: auto; } button, input, select, optgroup, textarea, ::file-selector-button { font: inherit; font-feature-settings: inherit; font-variation-settings: inherit; letter-spacing: inherit; color: inherit; border-radius: 0; background-color: transparent; opacity: 1; } :where(select:is([multiple], [size])) optgroup { font-weight: bolder; } :where(select:is([multiple], [size])) optgroup option { padding-inline-start: 20px; } ::file-selector-button { margin-inline-end: 4px; } ::placeholder { opacity: 1; color: color-mix(in oklab, currentColor 50%, transparent); } textarea { resize: vertical; } ::-webkit-search-decoration { -webkit-appearance: none; } ::-webkit-date-and-time-value { min-height: 1lh; text-align: inherit; } ::-webkit-datetime-edit { display: inline-flex; } ::-webkit-datetime-edit-fields-wrapper { padding: 0; } ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field { padding-block: 0; } :-moz-ui-invalid { box-shadow: none; } button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button { appearance: button; } ::-webkit-inner-spin-button, ::-webkit-outer-spin-button { height: auto; } [hidden]:where(:not([hidden='until-found'])) { display: none !important; } } @layer utilities { .pointer-events-none { pointer-events: none; } .absolute { position: absolute; } .fixed { position: fixed; } .relative { position: relative; } .sticky { position: sticky; } .inset-0 { inset: calc(var(--spacing) * 0); } .inset-x-0 { inset-inline: calc(var(--spacing) * 0); } .-end-2 { inset-inline-end: calc(var(--spacing) * -2); } .-top-2 { top: calc(var(--spacing) * -2); } .-top-40 { top: calc(var(--spacing) * -40); } .top-0 { top: calc(var(--spacing) * 0); } .top-1\/2 { top: calc(1/2 * 100%); } .top-\[calc\(100\%-13rem\)\] { top: calc(100% - 13rem); } .right-0 { right: calc(var(--spacing) * 0); } .right-2 { right: calc(var(--spacing) * 2); } .bottom-0 { bottom: calc(var(--spacing) * 0); } .left-0 { left: calc(var(--spacing) * 0); } .left-2 { left: calc(var(--spacing) * 2); } .left-\[calc\(50\%\+3rem\)\] { left: calc(50% + 3rem); } .left-\[calc\(50\%-11rem\)\] { left: calc(50% - 11rem); } .isolate { isolation: isolate; } .-z-1 { z-index: calc(1 * -1); } .-z-10 { z-index: calc(10 * -1); } .z-20 { z-index: 20; } .z-50 { z-index: 50; } .mx-auto { margin-inline: auto; } .my-2 { margin-block: calc(var(--spacing) * 2); } .mt-1 { margin-top: calc(var(--spacing) * 1); } .mt-4 { margin-top: calc(var(--spacing) * 4); } .mt-8 { margin-top: calc(var(--spacing) * 8); } .mt-10 { margin-top: calc(var(--spacing) * 10); } .-mr-2 { margin-right: calc(var(--spacing) * -2); } .mb-2 { margin-bottom: calc(var(--spacing) * 2); } .mb-3 { margin-bottom: calc(var(--spacing) * 3); } .mb-4 { margin-bottom: calc(var(--spacing) * 4); } .ml-4 { margin-left: calc(var(--spacing) * 4); } .ml-10 { margin-left: calc(var(--spacing) * 10); } .block { display: block; } .flex { display: flex; } .grid { display: grid; } .hidden { display: none; } .inline-block { display: inline-block; } .inline-flex { display: inline-flex; } .aspect-1155\/678 { aspect-ratio: 1155/678; } .aspect-square { aspect-ratio: 1 / 1; } .aspect-video { aspect-ratio: var(--aspect-video); } .size-6 { width: calc(var(--spacing) * 6); height: calc(var(--spacing) * 6); } .size-8 { width: calc(var(--spacing) * 8); height: calc(var(--spacing) * 8); } .h-1 { height: calc(var(--spacing) * 1); } .h-5 { height: calc(var(--spacing) * 5); } .h-6 { height: calc(var(--spacing) * 6); } .h-9 { height: calc(var(--spacing) * 9); } .h-10 { height: calc(var(--spacing) * 10); } .h-16 { height: calc(var(--spacing) * 16); } .h-48 { height: calc(var(--spacing) * 48); } .h-\[0\.875rem\] { height: 0.875rem; } .h-\[1\.125rem\] { height: 1.125rem; } .h-\[1rem\] { height: 1rem; } .h-\[400px\] { height: 400px; } .h-full { height: 100%; } .min-h-full { min-height: 100%; } .w-1\/3 { width: calc(1/3 * 100%); } .w-5 { width: calc(var(--spacing) * 5); } .w-6 { width: calc(var(--spacing) * 6); } .w-9 { width: calc(var(--spacing) * 9); } .w-10 { width: calc(var(--spacing) * 10); } .w-\[1\.25rem\] { width: 1.25rem; } .w-\[1rem\] { width: 1rem; } .w-\[36\.125rem\] { width: 36.125rem; } .w-fit { width: fit-content; } .w-full { width: 100%; } .max-w-2xl { max-width: var(--container-2xl); } .max-w-6xl { max-width: var(--container-6xl); } .max-w-7xl { max-width: var(--container-7xl); } .max-w-screen-sm { max-width: var(--breakpoint-sm); } .shrink-0 { flex-shrink: 0; } .-translate-x-1\/2 { --tw-translate-x: calc(calc(1/2 * 100%) * -1); translate: var(--tw-translate-x) var(--tw-translate-y); } .-translate-y-1\/2 { --tw-translate-y: calc(calc(1/2 * 100%) * -1); translate: var(--tw-translate-x) var(--tw-translate-y); } .rotate-\[30deg\] { rotate: 30deg; } .transform-gpu { transform: translateZ(0) var(--tw-rotate-x) var(--tw-rotate-y) var(--tw-rotate-z) var(--tw-skew-x) var(--tw-skew-y); } .cursor-pointer { cursor: pointer; } .touch-manipulation { touch-action: manipulation; } .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); } .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .flex-col { flex-direction: column; } .items-baseline { align-items: baseline; } .items-center { align-items: center; } .items-end { align-items: flex-end; } .justify-between { justify-content: space-between; } .justify-center { justify-content: center; } .gap-3 { gap: calc(var(--spacing) * 3); } .gap-4 { gap: calc(var(--spacing) * 4); } .gap-6 { gap: calc(var(--spacing) * 6); } .gap-8 { gap: calc(var(--spacing) * 8); } .gap-12 { gap: calc(var(--spacing) * 12); } .gap-14 { gap: calc(var(--spacing) * 14); } .space-y-1 { :where(& > :not(:last-child)) { --tw-space-y-reverse: 0; margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse)); margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse))); } } .gap-x-6 { column-gap: calc(var(--spacing) * 6); } .space-x-4 { :where(& > :not(:last-child)) { --tw-space-x-reverse: 0; margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse)); margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse))); } } .gap-y-10 { row-gap: calc(var(--spacing) * 10); } .overflow-hidden { overflow: hidden; } .overflow-x-auto { overflow-x: auto; } .scroll-smooth { scroll-behavior: smooth; } .rounded-full { border-radius: calc(infinity * 1px); } .rounded-lg { border-radius: var(--radius-lg); } .rounded-md { border-radius: var(--radius-md); } .rounded-xl { border-radius: var(--radius-xl); } .rounded-s-lg { border-start-start-radius: var(--radius-lg); border-end-start-radius: var(--radius-lg); } .rounded-e-lg { border-start-end-radius: var(--radius-lg); border-end-end-radius: var(--radius-lg); } .border { border-style: var(--tw-border-style); border-width: 1px; } .border-2 { border-style: var(--tw-border-style); border-width: 2px; } .border-t { border-top-style: var(--tw-border-style); border-top-width: 1px; } .border-b { border-bottom-style: var(--tw-border-style); border-bottom-width: 1px; } .border-gray-200 { border-color: var(--color-gray-200); } .border-gray-400 { border-color: var(--color-gray-400); } .border-gray-700 { border-color: var(--color-gray-700); } .border-white { border-color: var(--color-white); } .bg-\[\#e90\] { background-color: #e90; } .bg-gray-100 { background-color: var(--color-gray-100); } .bg-gray-200 { background-color: var(--color-gray-200); } .bg-gray-800 { background-color: var(--color-gray-800); } .bg-green-600 { background-color: var(--color-green-600); } .bg-indigo-600 { background-color: var(--color-indigo-600); } .bg-purple-700 { background-color: var(--color-purple-700); } .bg-red-200 { background-color: var(--color-red-200); } .bg-red-500 { background-color: var(--color-red-500); } .bg-white { background-color: var(--color-white); } .bg-white\/10 { background-color: color-mix(in oklab, var(--color-white) 10%, transparent); } .bg-gradient-to-br { --tw-gradient-position: to bottom right in oklab; background-image: linear-gradient(var(--tw-gradient-stops)); } .bg-gradient-to-r { --tw-gradient-position: to right in oklab; background-image: linear-gradient(var(--tw-gradient-stops)); } .bg-gradient-to-t { --tw-gradient-position: to top in oklab; background-image: linear-gradient(var(--tw-gradient-stops)); } .bg-linear-to-tr { --tw-gradient-position: to top right in oklab; background-image: linear-gradient(var(--tw-gradient-stops)); } .from-\[\#ff80b5\] { --tw-gradient-from: #ff80b5; --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-black\/80 { --tw-gradient-from: color-mix(in oklab, var(--color-black) 80%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-fuchsia-500\/40 { --tw-gradient-from: color-mix(in oklab, var(--color-fuchsia-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-gray-800 { --tw-gradient-from: var(--color-gray-800); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-pink-500\/40 { --tw-gradient-from: color-mix(in oklab, var(--color-pink-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-violet-500 { --tw-gradient-from: var(--color-violet-500); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .from-violet-500\/40 { --tw-gradient-from: color-mix(in oklab, var(--color-violet-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .via-black\/40 { --tw-gradient-via: color-mix(in oklab, var(--color-black) 40%, transparent); --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-via-stops); } .via-transparent { --tw-gradient-via: transparent; --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-via-stops); } .to-\[\#9089fc\] { --tw-gradient-to: #9089fc; --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .to-fuchsia-500 { --tw-gradient-to: var(--color-fuchsia-500); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .to-pink-500\/40 { --tw-gradient-to: color-mix(in oklab, var(--color-pink-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .to-purple-500\/40 { --tw-gradient-to: color-mix(in oklab, var(--color-purple-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .to-rose-500\/40 { --tw-gradient-to: color-mix(in oklab, var(--color-rose-500) 40%, transparent); --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .to-transparent { --tw-gradient-to: transparent; --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } .object-cover { object-fit: cover; } .object-center { object-position: center; } .p-1 { padding: calc(var(--spacing) * 1); } .p-2 { padding: calc(var(--spacing) * 2); } .p-4 { padding: calc(var(--spacing) * 4); } .px-2 { padding-inline: calc(var(--spacing) * 2); } .px-3 { padding-inline: calc(var(--spacing) * 3); } .px-3\.5 { padding-inline: calc(var(--spacing) * 3.5); } .px-4 { padding-inline: calc(var(--spacing) * 4); } .px-5 { padding-inline: calc(var(--spacing) * 5); } .px-6 { padding-inline: calc(var(--spacing) * 6); } .py-1 { padding-block: calc(var(--spacing) * 1); } .py-2 { padding-block: calc(var(--spacing) * 2); } .py-2\.5 { padding-block: calc(var(--spacing) * 2.5); } .py-3 { padding-block: calc(var(--spacing) * 3); } .py-4 { padding-block: calc(var(--spacing) * 4); } .py-7 { padding-block: calc(var(--spacing) * 7); } .py-16 { padding-block: calc(var(--spacing) * 16); } .py-32 { padding-block: calc(var(--spacing) * 32); } .pt-2 { padding-top: calc(var(--spacing) * 2); } .pt-4 { padding-top: calc(var(--spacing) * 4); } .pt-14 { padding-top: calc(var(--spacing) * 14); } .pb-3 { padding-bottom: calc(var(--spacing) * 3); } .text-center { text-align: center; } .text-left { text-align: left; } .text-2xl { font-size: var(--text-2xl); line-height: var(--tw-leading, var(--text-2xl--line-height)); } .text-5xl { font-size: var(--text-5xl); line-height: var(--tw-leading, var(--text-5xl--line-height)); } .text-base { font-size: var(--text-base); line-height: var(--tw-leading, var(--text-base--line-height)); } .text-lg { font-size: var(--text-lg); line-height: var(--tw-leading, var(--text-lg--line-height)); } .text-sm { font-size: var(--text-sm); line-height: var(--tw-leading, var(--text-sm--line-height)); } .text-sm\/6 { font-size: var(--text-sm); line-height: calc(var(--spacing) * 6); } .text-xl { font-size: var(--text-xl); line-height: var(--tw-leading, var(--text-xl--line-height)); } .text-xs { font-size: var(--text-xs); line-height: var(--tw-leading, var(--text-xs--line-height)); } .text-\[20px\] { font-size: 20px; } .font-bold { --tw-font-weight: var(--font-weight-bold); font-weight: var(--font-weight-bold); } .font-medium { --tw-font-weight: var(--font-weight-medium); font-weight: var(--font-weight-medium); } .font-semibold { --tw-font-weight: var(--font-weight-semibold); font-weight: var(--font-weight-semibold); } .tracking-tight { --tw-tracking: var(--tracking-tight); letter-spacing: var(--tracking-tight); } .text-balance { text-wrap: balance; } .text-pretty { text-wrap: pretty; } .whitespace-nowrap { white-space: nowrap; } .text-gray-200 { color: var(--color-gray-200); } .text-gray-400 { color: var(--color-gray-400); } .text-gray-500 { color: var(--color-gray-500); } .text-gray-600 { color: var(--color-gray-600); } .text-gray-700 { color: var(--color-gray-700); } .text-gray-800 { color: var(--color-gray-800); } .text-gray-900 { color: var(--color-gray-900); } .text-indigo-600 { color: var(--color-indigo-600); } .text-red-500 { color: var(--color-red-500); } .text-white { color: var(--color-white); } .uppercase { text-transform: uppercase; } .opacity-30 { opacity: 30%; } .opacity-50 { opacity: 50%; } .mix-blend-overlay { mix-blend-mode: overlay; } .shadow-lg { --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1)); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } .shadow-xs { --tw-shadow: 0 1px 2px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.05)); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } .ring-1 { --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } .ring-2 { --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } .ring-gray-900\/10 { --tw-ring-color: color-mix(in oklab, var(--color-gray-900) 10%, transparent); } .ring-indigo-300 { --tw-ring-color: var(--color-indigo-300); } .ring-offset-gray-400 { --tw-ring-offset-color: var(--color-gray-400); } .blur-3xl { --tw-blur: blur(var(--blur-3xl)); filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,); } .transition { transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter; transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)); transition-duration: var(--tw-duration, var(--default-transition-duration)); } .transition-all { transition-property: all; transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)); transition-duration: var(--tw-duration, var(--default-transition-duration)); } .transition-transform { transition-property: transform, translate, scale, rotate; transition-timing-function: var(--tw-ease, var(--default-transition-timing-function)); transition-duration: var(--tw-duration, var(--default-transition-duration)); } .duration-100 { --tw-duration: 100ms; transition-duration: 100ms; } .duration-200 { --tw-duration: 200ms; transition-duration: 200ms; } .duration-500 { --tw-duration: 500ms; transition-duration: 500ms; } .outline-none { --tw-outline-style: none; outline-style: none; } .group-hover\:scale-110 { &:is(:where(.group):hover *) { @media (hover: hover) { --tw-scale-x: 110%; --tw-scale-y: 110%; --tw-scale-z: 110%; scale: var(--tw-scale-x) var(--tw-scale-y); } } } .group-hover\:opacity-75 { &:is(:where(.group):hover *) { @media (hover: hover) { opacity: 75%; } } } .hover\:bg-\[\#0a2\] { &:hover { @media (hover: hover) { background-color: #0a2; } } } .hover\:bg-\[\#e13\] { &:hover { @media (hover: hover) { background-color: #e13; } } } .hover\:bg-gray-100 { &:hover { @media (hover: hover) { background-color: var(--color-gray-100); } } } .hover\:bg-gray-200 { &:hover { @media (hover: hover) { background-color: var(--color-gray-200); } } } .hover\:bg-indigo-500 { &:hover { @media (hover: hover) { background-color: var(--color-indigo-500); } } } .hover\:bg-indigo-600 { &:hover { @media (hover: hover) { background-color: var(--color-indigo-600); } } } .hover\:bg-sky-600 { &:hover { @media (hover: hover) { background-color: var(--color-sky-600); } } } .hover\:from-\[\#e0a\] { &:hover { @media (hover: hover) { --tw-gradient-from: #e0a; --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } } } .hover\:to-\[\#d90\] { &:hover { @media (hover: hover) { --tw-gradient-to: #d90; --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position)); } } } .hover\:text-gray-400 { &:hover { @media (hover: hover) { color: var(--color-gray-400); } } } .hover\:text-gray-700 { &:hover { @media (hover: hover) { color: var(--color-gray-700); } } } .hover\:text-gray-900 { &:hover { @media (hover: hover) { color: var(--color-gray-900); } } } .hover\:text-red-700 { &:hover { @media (hover: hover) { color: var(--color-red-700); } } } .hover\:ring-gray-900\/20 { &:hover { @media (hover: hover) { --tw-ring-color: color-mix(in oklab, var(--color-gray-900) 20%, transparent); } } } .focus\:ring-2 { &:focus { --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } } .focus\:ring-white { &:focus { --tw-ring-color: var(--color-white); } } .focus\:ring-offset-2 { &:focus { --tw-ring-offset-width: 2px; --tw-ring-offset-shadow: var(--tw-ring-inset,) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color); } } .focus\:ring-offset-gray-300 { &:focus { --tw-ring-offset-color: var(--color-gray-300); } } .focus\:outline-hidden { &:focus { --tw-outline-style: none; outline-style: none; @media (forced-colors: active) { outline: 2px solid transparent; outline-offset: 2px; } } } .focus-visible\:ring { &:focus-visible { --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentColor); box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow); } } .focus-visible\:outline-2 { &:focus-visible { outline-style: var(--tw-outline-style); outline-width: 2px; } } .focus-visible\:outline-offset-2 { &:focus-visible { outline-offset: 2px; } } .focus-visible\:outline-indigo-600 { &:focus-visible { outline-color: var(--color-indigo-600); } } .active\:bg-gray-200 { &:active { background-color: var(--color-gray-200); } } .sm\:-top-80 { @media (width >= 40rem) { top: calc(var(--spacing) * -80); } } .sm\:top-\[calc\(100\%-30rem\)\] { @media (width >= 40rem) { top: calc(100% - 30rem); } } .sm\:right-4 { @media (width >= 40rem) { right: calc(var(--spacing) * 4); } } .sm\:left-4 { @media (width >= 40rem) { left: calc(var(--spacing) * 4); } } .sm\:left-\[calc\(50\%\+36rem\)\] { @media (width >= 40rem) { left: calc(50% + 36rem); } } .sm\:left-\[calc\(50\%-30rem\)\] { @media (width >= 40rem) { left: calc(50% - 30rem); } } .sm\:my-0 { @media (width >= 40rem) { margin-block: calc(var(--spacing) * 0); } } .sm\:mb-3 { @media (width >= 40rem) { margin-bottom: calc(var(--spacing) * 3); } } .sm\:mb-8 { @media (width >= 40rem) { margin-bottom: calc(var(--spacing) * 8); } } .sm\:flex { @media (width >= 40rem) { display: flex; } } .sm\:h-6 { @media (width >= 40rem) { height: calc(var(--spacing) * 6); } } .sm\:h-12 { @media (width >= 40rem) { height: calc(var(--spacing) * 12); } } .sm\:h-\[500px\] { @media (width >= 40rem) { height: 500px; } } .sm\:w-6 { @media (width >= 40rem) { width: calc(var(--spacing) * 6); } } .sm\:w-12 { @media (width >= 40rem) { width: calc(var(--spacing) * 12); } } .sm\:w-\[72\.1875rem\] { @media (width >= 40rem) { width: 72.1875rem; } } .sm\:grid-cols-2 { @media (width >= 40rem) { grid-template-columns: repeat(2, minmax(0, 1fr)); } } .sm\:grid-cols-3 { @media (width >= 40rem) { grid-template-columns: repeat(3, minmax(0, 1fr)); } } .sm\:justify-center { @media (width >= 40rem) { justify-content: center; } } .sm\:rounded-2xl { @media (width >= 40rem) { border-radius: var(--radius-2xl); } } .sm\:p-8 { @media (width >= 40rem) { padding: calc(var(--spacing) * 8); } } .sm\:px-3 { @media (width >= 40rem) { padding-inline: calc(var(--spacing) * 3); } } .sm\:px-6 { @media (width >= 40rem) { padding-inline: calc(var(--spacing) * 6); } } .sm\:py-4 { @media (width >= 40rem) { padding-block: calc(var(--spacing) * 4); } } .sm\:py-24 { @media (width >= 40rem) { padding-block: calc(var(--spacing) * 24); } } .sm\:py-48 { @media (width >= 40rem) { padding-block: calc(var(--spacing) * 48); } } .sm\:text-2xl { @media (width >= 40rem) { font-size: var(--text-2xl); line-height: var(--tw-leading, var(--text-2xl--line-height)); } } .sm\:text-7xl { @media (width >= 40rem) { font-size: var(--text-7xl); line-height: var(--tw-leading, var(--text-7xl--line-height)); } } .sm\:text-base { @media (width >= 40rem) { font-size: var(--text-base); line-height: var(--tw-leading, var(--text-base--line-height)); } } .sm\:text-xl\/8 { @media (width >= 40rem) { font-size: var(--text-xl); line-height: calc(var(--spacing) * 8); } } .md\:col-span-2 { @media (width >= 48rem) { grid-column: span 2 / span 2; } } .md\:mb-12 { @media (width >= 48rem) { margin-bottom: calc(var(--spacing) * 12); } } .md\:ml-5 { @media (width >= 48rem) { margin-left: calc(var(--spacing) * 5); } } .md\:ml-6 { @media (width >= 48rem) { margin-left: calc(var(--spacing) * 6); } } .md\:block { @media (width >= 48rem) { display: block; } } .md\:hidden { @media (width >= 48rem) { display: none; } } .md\:h-80 { @media (width >= 48rem) { height: calc(var(--spacing) * 80); } } .md\:h-\[600px\] { @media (width >= 48rem) { height: 600px; } } .md\:gap-6 { @media (width >= 48rem) { gap: calc(var(--spacing) * 6); } } .md\:px-8 { @media (width >= 48rem) { padding-inline: calc(var(--spacing) * 8); } } .md\:py-3 { @media (width >= 48rem) { padding-block: calc(var(--spacing) * 3); } } .md\:text-3xl { @media (width >= 48rem) { font-size: var(--text-3xl); line-height: var(--tw-leading, var(--text-3xl--line-height)); } } .md\:text-base { @media (width >= 48rem) { font-size: var(--text-base); line-height: var(--tw-leading, var(--text-base--line-height)); } } .md\:text-lg { @media (width >= 48rem) { font-size: var(--text-lg); line-height: var(--tw-leading, var(--text-lg--line-height)); } } .lg\:max-w-7xl { @media (width >= 64rem) { max-width: var(--container-7xl); } } .lg\:grid-cols-3 { @media (width >= 64rem) { grid-template-columns: repeat(3, minmax(0, 1fr)); } } .lg\:flex-row { @media (width >= 64rem) { flex-direction: row; } } .lg\:gap-10 { @media (width >= 64rem) { gap: calc(var(--spacing) * 10); } } .lg\:px-8 { @media (width >= 64rem) { padding-inline: calc(var(--spacing) * 8); } } .lg\:py-56 { @media (width >= 64rem) { padding-block: calc(var(--spacing) * 56); } } .lg\:text-3xl { @media (width >= 64rem) { font-size: var(--text-3xl); line-height: var(--tw-leading, var(--text-3xl--line-height)); } } .xl\:aspect-7\/8 { @media (width >= 80rem) { aspect-ratio: 7/8; } } .xl\:grid-cols-4 { @media (width >= 80rem) { grid-template-columns: repeat(4, minmax(0, 1fr)); } } .xl\:gap-8 { @media (width >= 80rem) { gap: calc(var(--spacing) * 8); } } .xl\:gap-14 { @media (width >= 80rem) { gap: calc(var(--spacing) * 14); } } .xl\:gap-x-8 { @media (width >= 80rem) { column-gap: calc(var(--spacing) * 8); } } .rtl\:text-right { &:where(:dir(rtl), [dir="rtl"], [dir="rtl"] *) { text-align: right; } } .dark\:border-none { @media (prefers-color-scheme: dark) { --tw-border-style: none; border-style: none; } } .dark\:border-gray-900 { @media (prefers-color-scheme: dark) { border-color: var(--color-gray-900); } } .dark\:bg-gray-700 { @media (prefers-color-scheme: dark) { background-color: var(--color-gray-700); } } .dark\:text-gray-200 { @media (prefers-color-scheme: dark) { color: var(--color-gray-200); } } .dark\:text-gray-300 { @media (prefers-color-scheme: dark) { color: var(--color-gray-300); } } .dark\:text-gray-400 { @media (prefers-color-scheme: dark) { color: var(--color-gray-400); } } .dark\:text-white { @media (prefers-color-scheme: dark) { color: var(--color-white); } } } @property --tw-translate-x { syntax: "*"; inherits: false; initial-value: 0; } @property --tw-translate-y { syntax: "*"; inherits: false; initial-value: 0; } @property --tw-translate-z { syntax: "*"; inherits: false; initial-value: 0; } @property --tw-space-y-reverse { syntax: "*"; inherits: false; initial-value: 0; } @property --tw-space-x-reverse { syntax: "*"; inherits: false; initial-value: 0; } @property --tw-border-style { syntax: "*"; inherits: false; initial-value: solid; } @property --tw-gradient-position { syntax: "*"; inherits: false; } @property --tw-gradient-from { syntax: "<color>"; inherits: false; initial-value: #0000; } @property --tw-gradient-via { syntax: "<color>"; inherits: false; initial-value: #0000; } @property --tw-gradient-to { syntax: "<color>"; inherits: false; initial-value: #0000; } @property --tw-gradient-stops { syntax: "*"; inherits: false; } @property --tw-gradient-via-stops { syntax: "*"; inherits: false; } @property --tw-gradient-from-position { syntax: "<length-percentage>"; inherits: false; initial-value: 0%; } @property --tw-gradient-via-position { syntax: "<length-percentage>"; inherits: false; initial-value: 50%; } @property --tw-gradient-to-position { syntax: "<length-percentage>"; inherits: false; initial-value: 100%; } @property --tw-font-weight { syntax: "*"; inherits: false; } @property --tw-tracking { syntax: "*"; inherits: false; } @property --tw-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; } @property --tw-shadow-color { syntax: "*"; inherits: false; } @property --tw-inset-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; } @property --tw-inset-shadow-color { syntax: "*"; inherits: false; } @property --tw-ring-color { syntax: "*"; inherits: false; } @property --tw-ring-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; } @property --tw-inset-ring-color { syntax: "*"; inherits: false; } @property --tw-inset-ring-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; } @property --tw-ring-inset { syntax: "*"; inherits: false; } @property --tw-ring-offset-width { syntax: "<length>"; inherits: false; initial-value: 0px; } @property --tw-ring-offset-color { syntax: "*"; inherits: false; initial-value: #fff; } @property --tw-ring-offset-shadow { syntax: "*"; inherits: false; initial-value: 0 0 #0000; } @property --tw-blur { syntax: "*"; inherits: false; } @property --tw-brightness { syntax: "*"; inherits: false; } @property --tw-contrast { syntax: "*"; inherits: false; } @property --tw-grayscale { syntax: "*"; inherits: false; } @property --tw-hue-rotate { syntax: "*"; inherits: false; } @property --tw-invert { syntax: "*"; inherits: false; } @property --tw-opacity { syntax: "*"; inherits: false; } @property --tw-saturate { syntax: "*"; inherits: false; } @property --tw-sepia { syntax: "*"; inherits: false; } @property --tw-drop-shadow { syntax: "*"; inherits: false; } @property --tw-duration { syntax: "*"; inherits: false; } @property --tw-scale-x { syntax: "*"; inherits: false; initial-value: 1; } @property --tw-scale-y { syntax: "*"; inherits: false; initial-value: 1; } @property --tw-scale-z { syntax: "*"; inherits: false; initial-value: 1; } @property --tw-outline-style { syntax: "*"; inherits: false; initial-value: solid; } </style>
+	<style> span{ user-select: none;} .p-3{ padding: 12px; } .w-8{ width: 32px;} .gap-2{ gap: 8px;} .carousel-container { perspective: 1000px; touch-action: pan-y pinch-zoom; } .carousel-track { transform-style: preserve-3d; transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1); } .carousel-item { backface-visibility: hidden; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); } .carousel-item.active { opacity: 1; transform: scale(1) translateZ(0); } @media (max-width: 640px) { .carousel-item.prev { opacity: 0; transform: scale(0.8) translateX(-50%) translateZ(-100px); } .carousel-item.next { opacity: 0; transform: scale(0.8) translateX(50%) translateZ(-100px); } } @media (min-width: 641px) { .carousel-item.prev { opacity: 0.7; transform: scale(0.9) translateX(-100%) translateZ(-100px); } .carousel-item.next { opacity: 0.7; transform: scale(0.9) translateX(100%) translateZ(-100px); } } .carousel-item.hidden { opacity: 0; transform: scale(0.8) translateZ(-200px); } .nav-button { transition: all 0.3s; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); } @media (hover: hover) { .nav-button:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); } } .nav-button:active { transform: scale(0.95); } .progress-bar { transition: width 0.5s cubic-bezier(0.23, 1, 0.32, 1); } </style>
+	  <meta name="keywords" content="camera, imou, ezviz, cruiser">
+  <meta name="description" content="vente et installation des system informatique et securité">
+  <meta property="og:title" content="Balkhiri Hamid">
+  <meta property="og:description" content="vente et installation des system informatique et securité">
+  <meta property="og:image" content="https://balkhirihamid.github.io/younes/images/open_graph.webp">
+  <meta property="og:url" content="https://balkhirihamid.github.io/younes">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="images/favicon.png"/>
+  <title>Tender</title>
+</head>
+
+<body class="flex flex-col scroll-smooth relative gap-3">
+
+	<div class="panier hidden fixed items-center gap-4 flex flex-col top-0 left-0 w-full h-full bg-gray-100 p-2" style="position: fixed; z-index: 9999;">
+		<div class="flex w-full justify-between">
+			<h2 class="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-white">Pannier</h2>
+			<span onclick="Close()" class="flex justify-center items-center rounded-full bg-red-200 p-1 text-gray-900 hover:text-red-700 w-10 aspect-square">
+				<svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+			</span>
+		</div>
+		<div class="flex p-1 w-full overflow-x-auto">
+      <table class="w-full text-sm  rounded-md text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-white uppercase bg-purple-700 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th scope="col" class="px-6 py-3 rounded-s-lg">Product name</th>
+            <th scope="col" class="px-6 py-3">Qte</th>
+            <th scope="col" class="px-6 py-3">Price</th>
+            <th scope="col" class="px-6 py-3">Total</th>
+            <th scope="col" class="px-6 py-3 rounded-e-lg">Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <!-- <tfoot>
+          <tr class="font-semibold text-gray-900 dark:text-white">
+            <th scope="row" class="px-6 py-3 text-base">Total</th><td class="px-6 py-3">3</td><td class="px-6 py-3">21,000</td>
+          </tr>
+        </tfoot> -->
+      </table>
+		</div>
+		<a target="_blank" id="what" href="https://wa.me/0641550703?text=" class="px-4 rounded-full text-white bg-green-600 flex justify-center items-center hover:bg-[#0a2]">
+      <svg fill="#ffffff" width="44px" height="44px" viewBox="-56.32 -56.32 368.64 368.64" id="Flat"
+        xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="4.608">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier"><path d="M128.00049,28A100.02594,100.02594,0,0,0,41.11475,177.53908l-9.0044,31.51661a11.99971,11.99971,0,0,0,14.835,14.834l31.5166-9.00391A100.00677,100.00677,0,1,0,128.00049,28Zm0,192a91.87082,91.87082,0,0,1-46.95264-12.86719,3.99494,3.99494,0,0,0-3.14355-.4082l-33.15723,9.47363a3.99979,3.99979,0,0,1-4.94434-4.94531l9.47266-33.15625a4.00111,4.00111,0,0,0-.4082-3.14355A92.01077,92.01077,0,1,1,128.00049,220Zm50.51123-73.457-20.45947-11.69141a12.01054,12.01054,0,0,0-12.12745.12891l-13.80664,8.28418a44.04183,44.04183,0,0,1-19.38232-19.38281l8.28369-13.80664a12.0108,12.0108,0,0,0,.12891-12.127l-11.69092-20.46A10.91584,10.91584,0,0,0,100,72a32.00811,32.00811,0,0,0-32,31.88086A84.001,84.001,0,0,0,151.999,188h.12012A32.00842,32.00842,0,0,0,184,156,10.913,10.913,0,0,0,178.51172,146.543ZM152.10791,180h-.1084A75.99972,75.99972,0,0,1,76,103.8926,23.997,23.997,0,0,1,100,80a2.89975,2.89975,0,0,1,2.51172,1.457L114.20264,101.918a4.00418,4.00418,0,0,1-.043,4.042l-9.38916,15.64844a3.9987,3.9987,0,0,0-.21826,3.69824,52.04112,52.04112,0,0,0,26.1416,26.1416,3.99707,3.99707,0,0,0,3.69873-.21875L150.04,141.84084a4.006,4.006,0,0,1,4.043-.04394l20.46045,11.69238A2.89712,2.89712,0,0,1,176,156,23.99725,23.99725,0,0,1,152.10791,180Z"></path></g>
+      </svg>
+      <span>Commander</span>
+    </a>
+	</div>
+
+	<!-- navigation bar -->
+	<div class="min-h-full sticky w-full top-0 z-50">
+		<nav class=" border-b border-gray-200 bg-gray-100">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="flex h-16 items-center justify-between">
+					<div class="flex items-center">
+						<div class="shrink-0 rounded-full w-10 h-10 flex overflow-hidden items-center justify-center">
+							<img class="" style="width: 100px;" src="images/logo.webp" alt="Your Company">
+						</div>
+						<div class="hidden md:block">
+							<div class="ml-10 flex items-baseline space-x-4">
+								<a href="#product" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900" aria-current="page">Products</a>
+								<a href="#gallery" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900">Gallery</a>
+								<a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900">About</a>
+							</div>
+						</div>
+					</div>
+					<div class="flex gap-3 items-center">
+						<div class="md:block">
+							<div class="ml-4 flex items-center md:ml-6">
+								<button type="button" onclick="Open()" class="notif relative rounded-full bg-gray-200 p-1 text-gray-400 hover:text-gray-700 ring-2 focus:ring-white focus:ring-offset-2 ring-offset-gray-400 focus:outline-hidden">
+									<svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+									</svg>
+								</button>
+							</div>
+						</div>
+						<div class="-mr-2 flex md:hidden">
+							<!-- Mobile menu button -->
+							<button type="button" class="m inline-flex items-center justify-center rounded-md bg-gray-100 p-2 text-gray-400 hover:bg-gray-200 hover:text-gray-700 focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300 focus:outline-hidden" aria-controls="mobile-menu" aria-expanded="false">
+								<!-- Menu open: "hidden", Menu closed: "block" -->
+								<svg class="op block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+								</svg>
+								<!-- Menu open: "block", Menu closed: "hidden" -->
+								<svg class="cl hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+								</svg>
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+	
+			<!-- Mobile menu, show/hide based on menu state. -->
+			<div class="md:hidden hidden" id="mobile-menu">
+				<div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+					<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+					<a href="#product" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900">Products</a>
+					<a href="#gallery" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900">Gallery</a>
+					<a href="#about" class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900">About</a>
+				</div>
+				<div class="border-t border-gray-200 pt-4 pb-3">
+					<div class="flex items-center px-5">
+						
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+
+
+
+	<!-- Main container -->
+	<div class="w-full max-w-6xl mx-auto">
+		<!-- Carousel container -->
+		<div class="carousel-container relative">
+			<!-- Progress bar -->
+			<div class="absolute top-0 left-0 right-0 h-1 bg-white/10 rounded-full overflow-hidden z-20">
+				<div class="progress-bar absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-violet-500 to-fuchsia-500">
+				</div>
+			</div>
+
+			<!-- Navigation buttons -->
+			<button
+				class="nav-button absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center z-20 text-white touch-manipulation"
+				onclick="prevSlide()" title="Previous slide">
+				<svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+			</button>
+
+			<button
+				class="nav-button absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center z-20 text-white touch-manipulation"
+				onclick="nextSlide()" title="Next slide">
+				<svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+			</button>
+
+			<!-- Carousel track -->
+			<div class="carousel-track relative h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden">
+				<!-- Carousel items -->
+				<div class="carousel-item next absolute top-0 left-0 w-full h-full">
+					<div class="w-full h-full p-4 sm:p-8">
+						<div class="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden relative group">
+							<img src="images/1753103123011.webp" loading='lazy' alt="smart home "
+								class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+							<div class="absolute inset-0 mix-blend-overlay"> <!--<div class="absolute inset-0 mix-blend-overlay">-->
+							</div>
+							<div
+								class="absolute inset-x-0 bottom-0 p-4 sm:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+								<h3 class="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">smart home </h3>
+								<p class="text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl">vente et installation des systèmes domotique </p>
+							</div>
+						</div>
+					</div>
+				</div><div class="carousel-item next absolute top-0 left-0 w-full h-full">
+					<div class="w-full h-full p-4 sm:p-8">
+						<div class="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden relative group">
+							<img src="images/1753103328131.webp" loading='lazy' alt="smart home "
+								class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+							<div class="absolute inset-0 mix-blend-overlay"> <!--<div class="absolute inset-0 mix-blend-overlay">-->
+							</div>
+							<div
+								class="absolute inset-x-0 bottom-0 p-4 sm:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+								<h3 class="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">smart home </h3>
+								<p class="text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl">vente et installation des systèmes domotique </p>
+							</div>
+						</div>
+					</div>
+				</div><div class="carousel-item next absolute top-0 left-0 w-full h-full">
+					<div class="w-full h-full p-4 sm:p-8">
+						<div class="w-full h-full rounded-xl sm:rounded-2xl overflow-hidden relative group">
+							<img src="images/1753730736885.webp" loading='lazy' alt="surveillance son fil "
+								class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+							<div class="absolute inset-0 mix-blend-overlay"> <!--<div class="absolute inset-0 mix-blend-overlay">-->
+							</div>
+							<div
+								class="absolute inset-x-0 bottom-0 p-4 sm:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+								<h3 class="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-2 sm:mb-3">surveillance son fil </h3>
+								<p class="text-gray-200 text-sm sm:text-base md:text-lg max-w-2xl">tout les caméras 📷 sans fil et les systèmes surveillance </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="relative isolate px-6 pt-14 lg:px-8 -z-1">
+		<div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+			<div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+		</div>
+		<div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+			<div class="hidden sm:mb-8 sm:flex sm:justify-center">
+				<div class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+					Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-600"><span class="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+				</div>
+			</div>
+			<div class="text-center">
+				<h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">Data to enrich your online business</h1>
+				<p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.</p>
+				<div class="mt-10 flex items-center justify-center gap-x-6">
+					<a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
+					<a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span aria-hidden="true">→</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+			<div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+		</div>
+	</div>
+	
+  
+
+	<!-- Produts -->
+	<div class="bg-white">
+		<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 flex flex-col gap-6">
+			<h2 class="text-2xl font-bold text-gray-800 lg:text-3xl dark:text-white" id="product">Products</h2>
+
+			<div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+				<div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250416191147585396.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">camera ip imou 5mp </h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">350.0 MAD</p>
+        </div>
+        <span onclick="AddToList('camera ip imou 5mp ',1,350.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250416191301507372.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">retour Xiaomi 2.4/5Ghz </h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">250.0 MAD</p>
+        </div>
+        <span onclick="AddToList('retour Xiaomi 2.4/5Ghz ',1,250.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250416191520216453.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">camera ip hikvision 8 MP</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">400.0 MAD</p>
+        </div>
+        <span onclick="AddToList('camera ip hikvision 8 MP',1,400.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250416191626782270.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">vidéophone dahua ip 2mp réseau</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">2000.0 MAD</p>
+        </div>
+        <span onclick="AddToList('vidéophone dahua ip 2mp réseau',1,2000.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250517221554407311.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">switch poe 4 port</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">300.0 MAD</p>
+        </div>
+        <span onclick="AddToList('switch poe 4 port',1,300.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250517221702709328.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">Smart camera C500 pro</h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">400.0 MAD</p>
+        </div>
+        <span onclick="AddToList('Smart camera C500 pro',1,400.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250517221925705490.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">Smart switch domotique </h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">150.0 MAD</p>
+        </div>
+        <span onclick="AddToList('Smart switch domotique ',1,150.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div><div class="group flex-col p-3 rounded-lg border" style="border-color: #ddd;">
+      <img src="images/20250609155730717819.null" loading='lazy' alt="stopper."
+        class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8">
+      <div class="flex w-full justify-between items-center">
+        <div class="flex-col">
+          <h3 class="mt-4 text-sm text-gray-700">روتور شاومي </h3>
+          <p class="mt-1 text-lg font-medium text-gray-900 ">250.0 MAD</p>
+        </div>
+        <span onclick="AddToList('روتور شاومي ',1,250.0)" class="flex justify-center items-center cursor-pointer font-bold bg-[#e90] w-10 aspect-square text-white rounded-lg text-[20px]">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" style="padding: 0 7px ;" viewBox="0 0 16 16"> <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+      </div>
+    </div>
+				<!-- More products... -->
+			</div>
+		</div>
+	</div>
+	<!-- End produts -->
+
+	<!-- footer -->
+	<footer class="w-full bg-gray-100">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<!--Grid-->
+			<div class="py-16 flex justify-between items-center flex-col gap-8 lg:flex-row">
+				<ul
+					class="text-lg text-center sm:flex items-cente justify-center gap-14 lg:gap-10 xl:gap-14 transition-all duration-500">
+					<li class="sm:my-0 my-2"><a href="#gallery" class="text-gray-900 hover:text-gray-400">Gallery</a></li>
+					<li><a href="#product" class="text-gray-900 hover:text-gray-400">Products</a></li>
+					<li><a href="javascript:;" class="text-gray-900 hover:text-gray-400">Support</a></li>
+				</ul>
+
+				<div class="flex  space-x-4 sm:justify-center  ">
+					<a href="" class="w-9 h-9 rounded-full bg-gray-800 flex justify-center items-center hover:bg-indigo-600">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+							<path id="Vector"
+								d="M11.3214 8.93666L16.4919 3.05566H15.2667L10.7772 8.16205L7.1914 3.05566H3.05566L8.47803 10.7774L3.05566 16.9446H4.28097L9.022 11.552L12.8088 16.9446H16.9446L11.3211 8.93666H11.3214ZM9.64322 10.8455L9.09382 10.0765L4.72246 3.95821H6.60445L10.1322 8.8959L10.6816 9.66481L15.2672 16.083H13.3852L9.64322 10.8458V10.8455Z"
+								fill="white" />
+						</svg>
+					</a>
+
+					<a href=""
+						class="w-9 h-9 rounded-full bg-gray-800 flex justify-center items-center bg-gradient-to-r hover:from-[#e0a] hover:to-[#d90]">
+						<svg class="w-[1.25rem] h-[1.125rem] text-white" viewBox="0 0 15 15" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M4.70975 7.93663C4.70975 6.65824 5.76102 5.62163 7.0582 5.62163C8.35537 5.62163 9.40721 6.65824 9.40721 7.93663C9.40721 9.21502 8.35537 10.2516 7.0582 10.2516C5.76102 10.2516 4.70975 9.21502 4.70975 7.93663ZM3.43991 7.93663C3.43991 9.90608 5.05982 11.5025 7.0582 11.5025C9.05658 11.5025 10.6765 9.90608 10.6765 7.93663C10.6765 5.96719 9.05658 4.37074 7.0582 4.37074C5.05982 4.37074 3.43991 5.96719 3.43991 7.93663ZM9.97414 4.22935C9.97408 4.39417 10.0236 4.55531 10.1165 4.69239C10.2093 4.82946 10.3413 4.93633 10.4958 4.99946C10.6503 5.06259 10.8203 5.07916 10.9844 5.04707C11.1484 5.01498 11.2991 4.93568 11.4174 4.81918C11.5357 4.70268 11.6163 4.55423 11.649 4.39259C11.6817 4.23095 11.665 4.06339 11.6011 3.91109C11.5371 3.7588 11.4288 3.6286 11.2898 3.53698C11.1508 3.44536 10.9873 3.39642 10.8201 3.39635H10.8197C10.5955 3.39646 10.3806 3.48424 10.222 3.64043C10.0635 3.79661 9.97434 4.00843 9.97414 4.22935ZM4.21142 13.5892C3.52442 13.5584 3.15101 13.4456 2.90286 13.3504C2.57387 13.2241 2.33914 13.0738 2.09235 12.8309C1.84555 12.588 1.69278 12.3569 1.56527 12.0327C1.46854 11.7882 1.3541 11.4201 1.32287 10.7431C1.28871 10.0111 1.28189 9.79119 1.28189 7.93669C1.28189 6.08219 1.28927 5.86291 1.32287 5.1303C1.35416 4.45324 1.46944 4.08585 1.56527 3.84069C1.69335 3.51647 1.84589 3.28513 2.09235 3.04191C2.3388 2.79869 2.57331 2.64813 2.90286 2.52247C3.1509 2.42713 3.52442 2.31435 4.21142 2.28358C4.95417 2.24991 5.17729 2.24319 7.0582 2.24319C8.9391 2.24319 9.16244 2.25047 9.90582 2.28358C10.5928 2.31441 10.9656 2.42802 11.2144 2.52247C11.5434 2.64813 11.7781 2.79902 12.0249 3.04191C12.2717 3.2848 12.4239 3.51647 12.552 3.84069C12.6487 4.08513 12.7631 4.45324 12.7944 5.1303C12.8285 5.86291 12.8354 6.08219 12.8354 7.93669C12.8354 9.79119 12.8285 10.0105 12.7944 10.7431C12.7631 11.4201 12.6481 11.7881 12.552 12.0327C12.4239 12.3569 12.2714 12.5882 12.0249 12.8309C11.7784 13.0736 11.5434 13.2241 11.2144 13.3504C10.9663 13.4457 10.5928 13.5585 9.90582 13.5892C9.16306 13.6229 8.93994 13.6296 7.0582 13.6296C5.17645 13.6296 4.95395 13.6229 4.21142 13.5892ZM4.15307 1.03424C3.40294 1.06791 2.89035 1.18513 2.4427 1.3568C1.9791 1.53408 1.58663 1.77191 1.19446 2.1578C0.802277 2.54369 0.56157 2.93108 0.381687 3.38797C0.207498 3.82941 0.0885535 4.3343 0.0543922 5.07358C0.0196672 5.81402 0.0117188 6.05074 0.0117188 7.93663C0.0117188 9.82252 0.0196672 10.0592 0.0543922 10.7997C0.0885535 11.539 0.207498 12.0439 0.381687 12.4853C0.56157 12.9419 0.802334 13.3297 1.19446 13.7155C1.58658 14.1012 1.9791 14.3387 2.4427 14.5165C2.89119 14.6881 3.40294 14.8054 4.15307 14.839C4.90479 14.8727 5.1446 14.8811 7.0582 14.8811C8.9718 14.8811 9.212 14.8732 9.96332 14.839C10.7135 14.8054 11.2258 14.6881 11.6737 14.5165C12.137 14.3387 12.5298 14.1014 12.9219 13.7155C13.3141 13.3296 13.5543 12.9419 13.7347 12.4853C13.9089 12.0439 14.0284 11.539 14.062 10.7997C14.0962 10.0587 14.1041 9.82252 14.1041 7.93663C14.1041 6.05074 14.0962 5.81402 14.062 5.07358C14.0278 4.33424 13.9089 3.82913 13.7347 3.38797C13.5543 2.93135 13.3135 2.5443 12.9219 2.1578C12.5304 1.7713 12.137 1.53408 11.6743 1.3568C11.2258 1.18513 10.7135 1.06735 9.96388 1.03424C9.21256 1.00058 8.97236 0.992188 7.05876 0.992188C5.14516 0.992188 4.90479 1.00002 4.15307 1.03424Z"
+								fill="currentColor" />
+						</svg>
+					</a>
+
+					<a href="" class="w-9 h-9 rounded-full bg-gray-800 flex justify-center items-center hover:bg-sky-600">
+						<svg class="w-[1rem] h-[1rem] text-white" viewBox="0 0 13 12" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path
+								d="M2.8794 11.5527V3.86835H0.318893V11.5527H2.87967H2.8794ZM1.59968 2.81936C2.4924 2.81936 3.04817 2.2293 3.04817 1.49188C3.03146 0.737661 2.4924 0.164062 1.61666 0.164062C0.74032 0.164062 0.167969 0.737661 0.167969 1.49181C0.167969 2.22923 0.723543 2.8193 1.5829 2.8193H1.59948L1.59968 2.81936ZM4.29668 11.5527H6.85698V7.26187C6.85698 7.03251 6.87369 6.80255 6.94134 6.63873C7.12635 6.17968 7.54764 5.70449 8.25514 5.70449C9.18141 5.70449 9.55217 6.4091 9.55217 7.44222V11.5527H12.1124V7.14672C12.1124 4.78652 10.8494 3.68819 9.16483 3.68819C7.78372 3.68819 7.17715 4.45822 6.84014 4.98267H6.85718V3.86862H4.29681C4.33023 4.5895 4.29661 11.553 4.29661 11.553L4.29668 11.5527Z"
+								fill="currentColor" />
+						</svg>
+					</a>
+
+					<a href="" class="w-9 h-9 rounded-full bg-gray-800 flex justify-center items-center hover:bg-[#e13]">
+						<svg class="w-[1.25rem] h-[0.875rem] text-white" viewBox="0 0 16 12" fill="none"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M13.9346 1.13529C14.5684 1.30645 15.0665 1.80588 15.2349 2.43896C15.5413 3.58788 15.5413 5.98654 15.5413 5.98654C15.5413 5.98654 15.5413 8.3852 15.2349 9.53412C15.0642 10.1695 14.5661 10.669 13.9346 10.8378C12.7886 11.1449 8.19058 11.1449 8.19058 11.1449C8.19058 11.1449 3.59491 11.1449 2.44657 10.8378C1.81277 10.6666 1.31461 10.1672 1.14622 9.53412C0.839844 8.3852 0.839844 5.98654 0.839844 5.98654C0.839844 5.98654 0.839844 3.58788 1.14622 2.43896C1.31695 1.80353 1.81511 1.30411 2.44657 1.13529C3.59491 0.828125 8.19058 0.828125 8.19058 0.828125C8.19058 0.828125 12.7886 0.828125 13.9346 1.13529ZM10.541 5.98654L6.72178 8.19762V3.77545L10.541 5.98654Z"
+								fill="currentColor" />
+						</svg>
+					</a>
+
+					<a target="_blank" href="https://wa.me/+2120641550703?text=ok"
+						class="w-9 h-9 rounded-full bg-gray-800 flex justify-center items-center hover:bg-[#0a2]">
+						<svg fill="#ffffff" width="64px" height="64px" viewBox="-56.32 -56.32 368.64 368.64" id="Flat"
+							xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" stroke-width="4.608">
+							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+							<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+							<g id="SVGRepo_iconCarrier">
+								<path
+									d="M128.00049,28A100.02594,100.02594,0,0,0,41.11475,177.53908l-9.0044,31.51661a11.99971,11.99971,0,0,0,14.835,14.834l31.5166-9.00391A100.00677,100.00677,0,1,0,128.00049,28Zm0,192a91.87082,91.87082,0,0,1-46.95264-12.86719,3.99494,3.99494,0,0,0-3.14355-.4082l-33.15723,9.47363a3.99979,3.99979,0,0,1-4.94434-4.94531l9.47266-33.15625a4.00111,4.00111,0,0,0-.4082-3.14355A92.01077,92.01077,0,1,1,128.00049,220Zm50.51123-73.457-20.45947-11.69141a12.01054,12.01054,0,0,0-12.12745.12891l-13.80664,8.28418a44.04183,44.04183,0,0,1-19.38232-19.38281l8.28369-13.80664a12.0108,12.0108,0,0,0,.12891-12.127l-11.69092-20.46A10.91584,10.91584,0,0,0,100,72a32.00811,32.00811,0,0,0-32,31.88086A84.001,84.001,0,0,0,151.999,188h.12012A32.00842,32.00842,0,0,0,184,156,10.913,10.913,0,0,0,178.51172,146.543ZM152.10791,180h-.1084A75.99972,75.99972,0,0,1,76,103.8926,23.997,23.997,0,0,1,100,80a2.89975,2.89975,0,0,1,2.51172,1.457L114.20264,101.918a4.00418,4.00418,0,0,1-.043,4.042l-9.38916,15.64844a3.9987,3.9987,0,0,0-.21826,3.69824,52.04112,52.04112,0,0,0,26.1416,26.1416,3.99707,3.99707,0,0,0,3.69873-.21875L150.04,141.84084a4.006,4.006,0,0,1,4.043-.04394l20.46045,11.69238A2.89712,2.89712,0,0,1,176,156,23.99725,23.99725,0,0,1,152.10791,180Z">
+								</path>
+							</g>
+						</svg>
+					</a>
+				</div>
+
+
+			</div>
+			<!--Grid-->
+			<div class="py-7 border-t border-gray-700">
+				<div class="flex items-center justify-center">
+					<span class="text-gray-400 ">©<a target="_blank" href="https://tenderx.vercel.app/">Tender 2024, All rights reserved.</a></span>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+	<script>
+		var list = [];
+		const _ = (e)=> document.querySelector(e);
+		const Hidev = () => { document.querySelectorAll(".yt").forEach(x=>{ x.classList.add("hidden") }) }
+		const Showv = () => { document.querySelectorAll(".yt").forEach(x=>{ x.classList.remove("hidden") }) }
+		(function(){ navigator.onLine?Showv():Hidev() }());
+		window.addEventListener("online",()=>{ Showv() }); window.addEventListener("Tender",()=>{ Hidev() });
+		const Plus = (i, t) =>{ t>0?list[i].qte += 1:list[i].qte>1?list[i].qte-= 1:null; renderTable(); updateNotice(); }
+		const Close=()=>{ _(".panier").classList.add("hidden") }
+		const Open=()=>{ _(".panier").classList.remove("hidden"); renderTable() }
+		const AddToList=(desc, qte, prix)=>{!list.find(x=>x.designation==desc.trim())?list.push({ designation:desc.trim(), qte:qte, prix:prix}):null; if(list.length>0){ updateNotice() }}
+		const Delete = (i) => { list.splice(i,1); renderTable(); updateNotice() }
+		const updateNotice = () =>{ 
+			!_(".notif .badge")? _(".notif").innerHTML += '<span class="badge absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-red-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">'+list.length+'</span>':_(".badge").innerText=list.length; 
+			_("#what").href="https://wa.me/+212641550703?text="+list.map((x,i)=>{return "*"+x.designation+"* 	 "+x.qte+" 	 _"+x.prix+" Dhs_ 	 *"+x.prix*x.qte+"*"}).join(' %0a')+" %0a*Total: "+list.reduce((p,x)=>p+(x.prix*x.qte),0)+"* Dhs" 
+		}
+
+		
+		const renderTable = ()=>{
+			const Table = _("table");
+			Table.tBodies[0].innerHTML ="";
+			list.forEach((x,i)=>{
+				let tr = document.createElement("tr");
+				tr.className="border-b border-gray-400"
+				tr.innerHTML = '<th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">'+x.designation+'</th><td class="px-6 py-4">   <span class="flex justify-between items-center gap-2"><span class="flex justify-center items-center w-8 aspect-square rounded-full bg-white font-bold" onclick="Plus('+i+', 0)">-</span>'+x.qte+'<span onclick="Plus('+i+',1)" class="flex justify-center items-center w-8 aspect-square rounded-full bg-white font-bold">+</span></span>   </td><td class="px-6 py-4">'+x.prix+'.MAD</td> <td class="px-6 py-4 w-fit"><b>'+x.prix * x.qte+'.MAD</b></td> <td class="px-6 py-1"><span onClick="Delete('+i+')" class="rounded-lg w-fit block bg-white p-2 text-red-500 cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg></span></td>';
+				Table.tBodies[0].appendChild(tr);
+			}) 
+
+		}
+
+		var o = false;
+		_(".m").addEventListener("click",()=>{
+			o?(_(".op").className.baseVal ="op block size-6", _(".cl").className.baseVal="cl hidden size-6", o=!o):(_(".cl").className.baseVal="cl block size-6", _(".op").className.baseVal="op hidden size-6", o=!o)
+			o?_("#mobile-menu").classList.remove('hidden'):_("#mobile-menu").classList.add('hidden')
+		})
+	</script>
+	<script>
+		let currentSlide = 0;
+		const slides = document.querySelectorAll('.carousel-item');
+		const indicators = document.querySelectorAll('.bottom-2 button, .bottom-4 button');
+		const progressBar = document.querySelector('.progress-bar');
+		let autoAdvanceTimer;
+		let touchStartX = 0;
+		let touchEndX = 0;
+		const carousel = document.querySelector('.carousel-track');
+
+		// Add touch events for swipe
+		carousel.addEventListener('touchstart', e => {
+			touchStartX = e.changedTouches[0].screenX;
+		}, { passive: true });
+
+		carousel.addEventListener('touchend', e => {
+			touchEndX = e.changedTouches[0].screenX;
+			handleSwipe();
+		}, { passive: true });
+
+		function handleSwipe() {
+			const swipeThreshold = 50;
+			const diff = touchStartX - touchEndX;
+
+			if (Math.abs(diff) > swipeThreshold) {
+				if (diff > 0) {
+					nextSlide();
+				} else {
+					prevSlide();
+				}
+			}
+		}
+
+		function updateSlides() {
+			slides.forEach((slide, index) => {
+				slide.className = 'carousel-item absolute top-0 left-0 w-full h-full';
+				if (index === currentSlide) {
+					slide.classList.add('active');
+				} else if (index === (currentSlide + 1) % slides.length) {
+					slide.classList.add('next');
+				} else if (index === (currentSlide - 1 + slides.length) % slides.length) {
+					slide.classList.add('prev');
+				} else {
+					slide.classList.add('hidden');
+				}
+			});
+
+			// Update indicators
+			indicators.forEach((indicator, index) => {
+				indicator.className = "w-8 sm:w-12 h-1 sm:h-1.5 rounded-full transition-colors "+index === currentSlide ? 'bg-white/40' : 'bg-white/20 hover:bg-white/60';
+			});
+
+			// Update progress bar
+			progressBar.style.width = ((currentSlide + 1) / slides.length) * 100+'%';
+		}
+
+		function resetAutoAdvance() {
+			clearInterval(autoAdvanceTimer);
+			autoAdvanceTimer = setInterval(nextSlide, 5000);
+		}
+
+		function nextSlide() {
+			currentSlide = (currentSlide + 1) % slides.length;
+			updateSlides();
+			resetAutoAdvance();
+		}
+
+		function prevSlide() {
+			currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+			updateSlides();
+			resetAutoAdvance();
+		}
+
+		// Add click handlers to indicators
+		indicators.forEach((indicator, index) => {
+			indicator.addEventListener('click', () => {
+				currentSlide = index;
+				updateSlides();
+				resetAutoAdvance();
+			});
+		});
+
+		// Initialize auto advance
+		resetAutoAdvance();
+
+		// Initialize slides
+		updateSlides();
+	</script>
+</body>
+
+</html>
